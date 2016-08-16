@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
@@ -315,10 +315,6 @@ alsa_cards_wavefront
 
 # Unmask ultra1
 -ultra1
-
-# The default on SPARC is non-multilib
-# if a sub-profile want's it, it can -use.mask it
-multilib
 
 # Ben de Groot <yngwin@gentoo.org> (11 Feb 2009)
 # Both dev-qt/qtphonon and media-sound/phonon are unkeyworded

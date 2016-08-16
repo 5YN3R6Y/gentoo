@@ -382,3 +382,7 @@ app-admin/rsyslog zeromq
 # Marius Brehler <marfbre@linux.sungazer.de> (13 Aug 2015)
 # missing keyword
 >=sci-misc/boinc-7.4.42-r1 X
+
+# Alex McWhirter <alexmcwhirter@triadic.us> (16 Aug 2016)
+# OpenSSL assembly is broken on SPARC.
+>=dev-libs/openssl-1.0.2e asm

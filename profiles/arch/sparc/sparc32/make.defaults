@@ -1,0 +1,16 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+ABI="sparc32"
+ARCH="sparc"
+CHOST="sparc-unknown-linux-gnu"
+DEFAULT_ABI="sparc32"
+IUSE_IMPLICIT="abi_sparc_32"
+
+# Alex McWhirter <alexmcwhirter@triadic.us> (16 Aug 2016)
+# The sparc32 kernel is dead, so we're using sparc64 instead.
+# Unfortunately this means sparc32 is sun4u+ only.
+KERNEL_ABI="sparc64"
+
+MULTILIB_ABIS="sparc32 sparc64"

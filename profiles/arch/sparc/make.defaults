@@ -1,40 +1,36 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-ARCH="sparc"
-ACCEPT_KEYWORDS="${ARCH}"
+# Alex McWhirter <alexmcwhirter@triadic.us> (16 Aug 2016)
+# All of these builds are sparc64. Yes even sparc32, because it uses a 64 bit kernel.
+# Unfortunately portage doesn't know about sparc64, but rather it only knows sparc.
+# So for now we need portage to see us as sparc even though it's technically wrong.
+#
+# Maybe we should rename sparc to sparc64?
 
-# 64bit kernel, 32bit userland
-CHOST="sparc-unknown-linux-gnu"
-PROFILE_ARCH="sparc64"
+ACCEPT_KEYWORDS="sparc"
 
-# We need sparc64 binutils for linux-headers
+CFLAGS="-mcpu=ultrasparc -mtune=ultrasparc -O2 -pipe"
+CFLAGS_sparc32="-m32"
+CFLAGS_sparc64="-m64"
+CHOST_sparc32="sparc-unknown-linux-gnu"
+CHOST_sparc64="sparc64-unknown-linux-gnu"
+
+# Alex McWhirter <alexmcwhirter@triadic.us> (16 Aug 2016)
+# All sparc profiles use this in one way or another.
+# sparc32 needs it in order to build a 64 bit kernel.
+# sparc64 needs it in order to build a 32 bit SILO.
+
 CTARGETS_BINUTILS="sparc-unknown-linux-gnu sparc64-unknown-linux-gnu"
 
-# The funky stuffs for handling different kernel compiler than userland compiler
-KERNEL_ABI="sparc64"
-CHOST_sparc64="sparc64-unknown-linux-gnu"
+CXXFLAGS="-mcpu=ultrasparc -mtune=ultrasparc -O2 -pipe"
+FCFLAGS="-mcpu=ultrasparc -mtune=ultrasparc -O2 -pipe"
+FFLAGS="-mcpu=ultrasparc -mtune=ultrasparc -O2 -pipe"
+LDFLAGS_sparc32="-m elf32_sparc"
 LDFLAGS_sparc64="-m elf64_sparc"
 
-# Multilib stuff
-MULTILIB_ABIS="sparc32"
-DEFAULT_ABI="sparc32"
-ABI="${DEFAULT_ABI}"
-CFLAGS_sparc32=""  # 32 bit is the default, so no need to set it.
-LDFLAGS_sparc32="" # setting it would make gcc use -m32 and -m64 at the same time
-CHOST_sparc32="sparc-unknown-linux-gnu"
-CTARGET_sparc32="sparc-unknown-linux-gnu"
-# do NOT set CFLAGS_sparc64 here it'd break linux-headers for non-multilib
-# profiles
-
-# Compiler flags
-CFLAGS="-O2 -mcpu=ultrasparc -pipe"
-CXXFLAGS=${CFLAGS}
-
-# These are here to override features/32bit-userland's settings. DO NOT REMOVE!
-FEATURES="-multilib-strict"
-MULTILIB_STRICT_DIRS="/lib32 /usr/lib32 /usr/kde/*/lib32 /usr/qt/*/lib32 /usr/X11R6/lib32"
+SYMLINK_LIB=no
 
 # 2006/10/05 - Gustavo Zacarias <gustavoz@gentoo.org>
 # Defaults for video drivers

@@ -151,13 +151,28 @@ sh              default/linux/sh/13.0/desktop/kde               exp
 sh              default/linux/sh/13.0/developer                 exp
 
 # SPARC Profiles
-sparc           default/linux/sparc/13.0                        stable
-sparc           default/linux/sparc/13.0/desktop                stable
-sparc           default/linux/sparc/13.0/desktop/gnome          stable
-sparc           default/linux/sparc/13.0/desktop/gnome/systemd  stable
-sparc           default/linux/sparc/13.0/desktop/kde            stable
-sparc           default/linux/sparc/13.0/desktop/kde/systemd    stable
-sparc           default/linux/sparc/13.0/developer              stable
+sparc           default/linux/sparc/sparc32/13.0                                 stable
+sparc           default/linux/sparc/sparc32/13.0/desktop                         stable
+sparc           default/linux/sparc/sparc32/13.0/desktop/gnome                   stable
+sparc           default/linux/sparc/sparc32/13.0/desktop/gnome/systemd           stable
+sparc           default/linux/sparc/sparc32/13.0/desktop/kde                     stable
+sparc           default/linux/sparc/sparc32/13.0/desktop/kde/systemd             stable
+sparc           default/linux/sparc/sparc32/13.0/desktop/plasma                  stable
+sparc           default/linux/sparc/sparc32/13.0/desktop/plasma/systemd          stable
+sparc           default/linux/sparc/sparc32/13.0/developer                       stable
+sparc           default/linux/sparc/sparc32/13.0/no-multilib                     stable
+
+# SPARC64 Profiles
+sparc64         default/linux/sparc/sparc64/13.0                                 stable
+sparc64         default/linux/sparc/sparc64/13.0/desktop                         stable
+sparc64         default/linux/sparc/sparc64/13.0/desktop/gnome                   stable
+sparc64         default/linux/sparc/sparc64/13.0/desktop/gnome/systemd           stable
+sparc64         default/linux/sparc/sparc64/13.0/desktop/kde                     stable
+sparc64         default/linux/sparc/sparc64/13.0/desktop/kde/systemd             stable
+sparc64         default/linux/sparc/sparc64/13.0/desktop/plasma                  stable
+sparc64         default/linux/sparc/sparc64/13.0/desktop/plasma/systemd          stable
+sparc64         default/linux/sparc/sparc64/13.0/developer                       stable
+sparc64         default/linux/sparc/sparc64/13.0/no-multilib                     stable
 
 # x86 Profiles
 x86             default/linux/x86/13.0                          stable

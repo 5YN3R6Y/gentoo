@@ -1,0 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Alex McWhirter <alexmcwhirter@triadic.us> (16 Aug 2016)
+# The multilib flag should be unmasked on multilib profiles.
+-multilib
