@@ -113,68 +113,71 @@ setup_target_flags() {
 			# Note: Should we factor in -Wa,-AvXXX flags too ?  Or -mvis/etc... ?
 
 			local cpu
-			case ${CTARGET} in
-			sparc64-*)
-				case $(get-flag mcpu) in
-				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparc64v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
+			case $(get-flag mcpu) in
+			niagara[234])
+				if version_is_at_least 2.8 ; then
+					if [[ ${ABI} == "sparc32" ]] ; then
+						cpu=sparcv9v2
+					else
+						cpu=sparc64v2
 					fi
-					;;
-				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
+				elif version_is_at_least 2.4 ; then
+					if [[ ${ABI} == "sparc32" ]] ; then
+						cpu=sparcv9v
+					else
+						cpu=sparc64v
 					fi
-					;;
-				ultrasparc3)
-					cpu="sparc64b"
-					;;
-				*)
+				elif version_is_at_least 2.2.3 ; then
+					if [[ ${ABI} == "sparc32" ]] ; then
+						cpu=sparcv9b
+					else
+						cpu=sparc64b
+					fi
+				fi
+			;;
+			niagara)
+				if version_is_at_least 2.4 ; then
+					if [[ ${ABI} == "sparc32" ]] ; then
+						cpu=sparcv9v
+					else
+						cpu=sparc64v
+					fi
+				elif version_is_at_least 2.2.3 ; then
+					if [[ ${ABI} == "sparc32" ]] ; then
+						cpu=sparcv9b
+					else
+						cpu=sparc64b
+					fi
+				fi
+			;;
+			ultrasparc3)
+				if [[ ${ABI} == "sparc32" ]] ; then
+					cpu=sparcv9b
+				else
+					cpu=sparc64b
+				fi
+			;;
+			ultrasparc)
+				if [[ ${ABI} == "sparc32" ]] ; then
+					cpu=sparcv9
+				else
+					cpu=sparc64
+				fi
+			;;
+			v9)
+				if [[ ${ABI} == "sparc32" ]] ; then
+					cpu=sparcv9
+				else
+					cpu=sparc64
+
 					# We need to force at least v9a because the base build doesn't
 					# work with just v9.
 					# https://sourceware.org/bugzilla/show_bug.cgi?id=19477
 					[[ -z ${cpu} ]] && append-flags "-Wa,-xarch=v9a"
-					;;
-				esac
-				;;
-			sparc-*)
-				case $(get-flag mcpu) in
-				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparcv9v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
-					;;
-				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
-					;;
-				ultrasparc3)
-					cpu="sparcv9b"
-					;;
-				v9|ultrasparc)
-					cpu="sparcv9"
-					;;
-				v8|supersparc|hypersparc|leon|leon3)
-					cpu="sparcv8"
-					;;
-				esac
+				fi
+			;;
+			v8|supersparc|hypersparc|leon|leon3)
+				cpu="sparcv8"
 			;;
 			esac
 			[[ -n ${cpu} ]] && CTARGET_OPT="${cpu}-${CTARGET#*-}"
