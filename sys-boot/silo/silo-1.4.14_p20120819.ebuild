@@ -42,7 +42,7 @@ src_unpack() {
 src_compile() {
 	filter-flags "-fstack-protector"
 
-	make ${MAKEOPTS} CC="$(tc-getCC)" || die
+	make ${MAKEOPTS} CC="$(tc-getCC) -m32" || die
 }
 
 src_install() {
