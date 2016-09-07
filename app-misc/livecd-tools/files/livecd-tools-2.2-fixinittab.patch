@@ -1,0 +1,11 @@
+--- a/init.d/fixinittab
++++ b/init.d/fixinittab
+@@ -25,7 +25,7 @@
+ 	sed -i -e '/^b0/ s/^/#/' /etc/inittab
+ 
+ 	# SPARC & HPPA console magic
+-	if [ "${HOSTTYPE}" = "sparc" -o "${HOSTTYPE}" = "hppa" -o "${HOSTTYPE}" = "ppc64" ]
++	if [ "${HOSTTYPE}" = "hppa" -o "${HOSTTYPE}" = "ppc64" -o "${HOSTTYPE}" = "sparc" -o "${HOSTTYPE}" = "sparc64" ]
+ 	then
+ 		# Mount openprom tree for user debugging purposes
+ 		if [ "${HOSTTYPE}" = "sparc" ]

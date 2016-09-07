@@ -27,11 +27,25 @@ RDEPEND="dev-util/dialog
 	sys-apps/gawk
 	sys-apps/sed"
 
+PATCHES="${FILESDIR}/${P}-fixinittab.patch"
+
+inherit eutils
+
 pkg_setup() {
 		ewarn "This package is designed for use on the LiveCD only and will do"
 		ewarn "unspeakably horrible and unexpected things on a normal system."
 		ewarn "YOU HAVE BEEN WARNED!!!"
 }
+
+src_prepare() {
+	if declare -p PATCHES | grep -q "^declare -a "; then
+		[[ -n ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+	else
+		[[ -n ${PATCHES} ]] && eapply ${PATCHES}
+	fi
+	eapply_user
+}
+
 
 src_install() {
 	doconfd conf.d/*
