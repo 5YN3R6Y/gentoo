@@ -1,0 +1,11 @@
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -432,7 +432,7 @@
+ 		    sparc64*|sparcv9*)
+ 			case "$host_os" in
+ 
+-			freebsd*|solaris*|openbsd*)
++			freebsd*|solaris*|openbsd*|linux*)
+ 			    PIC_OPT=-fPIC
+ 			    ;;
+ 			esac
