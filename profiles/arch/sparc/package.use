@@ -5,3 +5,9 @@
 # Pacho Ramos <pacho@gentoo.org> (15 Feb 2014)    
 # libev isn't supported on this arch, use another default (#499498)
 dev-libs/libverto libevent
+
+# Alex McWhirter <alexmcwhirter@triadic.us> (7 Sept 2016)
+# These are needed for cifs-utils on the install cd
+sys-libs/ntdb python
+sys-libs/tdb python
+sys-libs/tevent python
