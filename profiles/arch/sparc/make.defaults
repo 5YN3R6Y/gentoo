@@ -12,10 +12,17 @@
 ACCEPT_KEYWORDS="sparc"
 
 CFLAGS="-mcpu=ultrasparc -mtune=ultrasparc -O2 -pipe"
+
+# Alex McWhirter <alexmcwhirter@triadic.us> (9 Sept 2016)
+# We shouldn't depend on multilib_env to do the dirty
+# work for us, so lets define all of this here.
+
 CFLAGS_sparc32="-m32"
 CFLAGS_sparc64="-m64"
 CHOST_sparc32="sparc-unknown-linux-gnu"
 CHOST_sparc64="sparc64-unknown-linux-gnu"
+CTARGET_sparc32="sparc-unknown-linux-gnu"
+CTARGET_sparc64="sparc64-unknown-linux-gnu"
 
 # Alex McWhirter <alexmcwhirter@triadic.us> (16 Aug 2016)
 # All sparc profiles use this in one way or another.
